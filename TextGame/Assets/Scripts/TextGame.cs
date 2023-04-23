@@ -26,7 +26,9 @@ public class TextGame : MonoBehaviour
     {
        
 
-        Debug.Log("Witam w grze - Wymyœl liczbê od 1 do 1000");
+        Debug.Log("Witam w grze - Wymyœl liczbê od "+min+" do "+max+", jeœli komputer poka¿e liczbê wiêksz¹ ni¿ Twoja liczba - naciœnij strza³kê w dó³," +
+            " jeœli mniejsz¹ - naciœnij strza³kê w górê, jeœli wska¿e Twoj¹ liczbê - naciœnij enter.");
+        max = 1001;
         Debug.Log("Czy Twoja liczba jest wiêksza, mniejsza b¹dŸ równa 500?");
         //print string
         //Naciœnij górn¹ strza³kê aby odpowiedzieæ, ¿e wiêksza
@@ -39,20 +41,23 @@ public class TextGame : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             min = shoot;
-            shoot = (min + max) / 2;
-            Debug.Log("Czy Twoja liczba jest mniejsza, wiêksza b¹dŸ równa " + shoot + " ?");
+            NextShoot();
         };
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             max = shoot;
-            shoot = (min + max) / 2;
-            Debug.Log("Czy Twoja liczba jest mniejsza, wiêksza b¹dŸ równa " + shoot + " ?");
+            NextShoot();
         };
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            Debug.Log("Komputer zgad³ Twoj¹ liczbê");
+            Debug.Log("Koniec gry. Komputer zgad³ Twoj¹ liczbê");
         };
+    }
+    void NextShoot()
+    {
+        shoot = (min + max) / 2;
+        Debug.Log("Czy Twoja liczba jest mniejsza, wiêksza b¹dŸ równa " + shoot + " ?");
     }
 }
